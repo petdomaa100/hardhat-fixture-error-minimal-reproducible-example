@@ -1,0 +1,30 @@
+{
+	"name": "hardhat-bug-minimal-example",
+	"private": true,
+	"scripts": {
+		"compile": "hardhat compile",
+		"test": "hardhat test",
+		"test:t": "hardhat test --typecheck",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@nomicfoundation/hardhat-network-helpers": "1.0.0",
+		"@nomicfoundation/hardhat-toolbox-viem": "2.0.0",
+		"@nomicfoundation/hardhat-verify": "2.0.0",
+		"@nomicfoundation/hardhat-viem": "1.0.0",
+		"@openzeppelin/contracts": "^5.0.2",
+		"@types/chai": "4.2.0",
+		"@types/chai-as-promised": "7.1.6",
+		"@types/mocha": "^10.0.6",
+		"@types/node": "^20.12.8",
+		"chai": "4.2.0",
+		"dotenv": "^16.4.7",
+		"hardhat": "^2.22.3",
+		"hardhat-chai-matchers-viem": "^2.0.8",
+		"hardhat-gas-reporter": "1.0.8",
+		"solidity-coverage": "0.8.0",
+		"ts-node": "^10.9.2",
+		"typescript": "~5.0.4",
+		"viem": "1.15.1"
+	}
+}
