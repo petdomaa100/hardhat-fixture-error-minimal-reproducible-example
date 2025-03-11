@@ -1,5 +1,4 @@
-import { loadFixture } from '@nomicfoundation/hardhat-toolbox-viem/network-helpers';
-import { baseTokenFixture as _baseTokenFixture, mintTokenFixture as _mintTokenFixture } from './fixtures';
+import { loadBaseTokenFixture as _loadBaseTokenFixture, loadMintTokenFixture as _loadMintTokenFixture } from './fixtures';
 
 function testMinting(whichOne: 'ONE' | 'TWO') {
 	/**
@@ -7,13 +6,13 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	 * This IIFE generates a unique reference, preventing memoization from reusing a previously saved
 	 * fixture from another time this function was ran with different parameters.
 	 */
-	const baseTokenFixture = function() {
-		return _baseTokenFixture.bind(null, whichOne);
+	const loadBaseTokenFixture = function() {
+		return _loadBaseTokenFixture.bind(null, whichOne);
 	}();
 
 	// Same reason here.
-	const mintTokenFixture = function() {
-		return _mintTokenFixture.bind(null, whichOne);
+	const loadMintTokenFixture = function() {
+		return _loadMintTokenFixture.bind(null, whichOne);
 	}();
 
 	// ==========
@@ -21,7 +20,7 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	it('Test 1', async () => {
 		const {
 			contracts: { Token }
-		} = await loadFixture(baseTokenFixture);
+		} = await loadBaseTokenFixture();
 
 		// [...] Some test
 	});
@@ -29,7 +28,7 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	it('Test 2', async () => {
 		const {
 			contracts: { Token }
-		} = await loadFixture(mintTokenFixture);
+		} = await loadMintTokenFixture();
 
 		// [...] Some test
 	});
@@ -37,7 +36,7 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	it('Test 3', async () => {
 		const {
 			contracts: { Token }
-		} = await loadFixture(baseTokenFixture);
+		} = await loadBaseTokenFixture();
 
 		// [...] Some test
 	});
@@ -45,7 +44,7 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	it('Test 4', async () => {
 		const {
 			contracts: { Token }
-		} = await loadFixture(mintTokenFixture);
+		} = await loadMintTokenFixture();
 
 		// [...] Some test
 	});
@@ -53,7 +52,7 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	it('Test 5', async () => {
 		const {
 			contracts: { Token }
-		} = await loadFixture(baseTokenFixture);
+		} = await loadBaseTokenFixture();
 
 		// [...] Some test
 	});
@@ -61,7 +60,7 @@ function testMinting(whichOne: 'ONE' | 'TWO') {
 	it('Test 6', async () => {
 		const {
 			contracts: { Token }
-		} = await loadFixture(mintTokenFixture);
+		} = await loadMintTokenFixture();
 
 		// [...] Some test
 	});

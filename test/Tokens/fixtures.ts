@@ -1,11 +1,12 @@
+import { loadFixture } from '@nomicfoundation/hardhat-toolbox-viem/network-helpers';
 import { deployFixture } from '../base-fixture';
 import type { GetContractReturnType } from '@nomicfoundation/hardhat-viem/types';
 import type { ArtifactsMap } from 'hardhat/types/artifacts';
 
 type IShared = GetContractReturnType<ArtifactsMap['IShared']['abi']>;
 
-async function baseTokenFixture(whichOne: 'ONE' | 'TWO') {
-	const fixture = await deployFixture();
+async function loadBaseTokenFixture(whichOne: 'ONE' | 'TWO') {
+	const fixture = await loadFixture(deployFixture);
 
 	const {
 		contracts: { Token1, Token2, ...restContracts },
@@ -19,8 +20,8 @@ async function baseTokenFixture(whichOne: 'ONE' | 'TWO') {
 	};
 }
 
-async function mintTokenFixture(whichOne: 'ONE' | 'TWO') {
-	const fixture = await baseTokenFixture(whichOne);
+async function loadMintTokenFixture(whichOne: 'ONE' | 'TWO') {
+	const fixture = await loadBaseTokenFixture(whichOne);
 
 	const {
 		contracts: { Token },
@@ -37,4 +38,4 @@ async function mintTokenFixture(whichOne: 'ONE' | 'TWO') {
 	};
 }
 
-export { baseTokenFixture, mintTokenFixture };
+export { loadBaseTokenFixture, loadMintTokenFixture };
